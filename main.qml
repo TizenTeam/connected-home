@@ -250,6 +250,14 @@ Window {
         }
 
         // GENIVI and Open Connectivity Foundation Logos
+        Image {
+            id: binaryswitch
+            height: 1
+            width: 1
+            cache: false
+            property bool state: true
+            source: "http://localhost:8080/?query=" + state
+        }
 
         Image {
             id: logoGenivi
@@ -258,7 +266,15 @@ Window {
             height: 140
             width: 160
             z: 13
-            source: "qrc:/img/genivi-logo.png"
+            source: (!binaryswitch.state) ? "qrc:/img/ocf-logo.png" : "qrc:/img/genivi-logo.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                   binaryswitch.state = !binaryswitch.state
+                }
+            }
+
         }
 
         Image {
@@ -268,7 +284,14 @@ Window {
             height: 140
             width: 284
             z: 12
-            source: "qrc:/img/ocf-logo.png"
+            source: (binaryswitch.state) ? "qrc:/img/ocf-logo.png" : "qrc:/img/genivi-logo.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                   binaryswitch.state = !binaryswitch.state
+                }
+            }
         }
     }
 }
