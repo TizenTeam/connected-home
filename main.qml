@@ -258,7 +258,7 @@ Window {
             height: 140
             width: 160
             z: 13
-            source: "qrc:/img/genivi-logo.png"
+            source: (!switch.state ) ? "qrc:/img/ocf-logo.png", "qrc:/img/genivi-logo.png"      
         }
 
         Image {
@@ -268,7 +268,23 @@ Window {
             height: 140
             width: 284
             z: 12
-            source: "qrc:/img/ocf-logo.png"
+            source: (switch.state) ? "qrc:/img/ocf-logo.png", "qrc:/img/genivi-logo.png"
+        }
+
+        Image {
+            id: switch
+            height: 0
+            width:0
+            cache: false
+            property bool state: true
+            source:  "http://localhost:8080/?query=" + state
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                   switch.state = ! switch.state
+                }
+            }
         }
     }
 }
