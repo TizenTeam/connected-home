@@ -258,7 +258,7 @@ Window {
             height: 140
             width: 160
             z: 13
-            source: (!switch.state ) ? "qrc:/img/ocf-logo.png", "qrc:/img/genivi-logo.png"      
+            source: (!switch.state ) ? "qrc:/img/ocf-logo.png" : "qrc:/img/genivi-logo.png"
         }
 
         Image {
@@ -268,7 +268,7 @@ Window {
             height: 140
             width: 284
             z: 12
-            source: (switch.state) ? "qrc:/img/ocf-logo.png", "qrc:/img/genivi-logo.png"
+            source: (switch.state) ? "qrc:/img/ocf-logo.png" : "qrc:/img/genivi-logo.png"
         }
 
         Image {
